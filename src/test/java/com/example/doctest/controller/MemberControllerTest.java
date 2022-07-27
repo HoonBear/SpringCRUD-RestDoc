@@ -13,6 +13,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.example.doctest.DatabaseCleanup;
 import com.example.doctest.domain.member.MemberRepository;
 import com.example.doctest.dto.member.MemberCreateDTO;
 import com.example.doctest.dto.member.MemberDeleteDTO;
@@ -55,6 +56,9 @@ class MemberControllerTest {
     @Autowired
     private MemberRepository memberRepository;
 
+    @Autowired
+    private DatabaseCleanup databaseCleanup;
+
     MediaType MEDIA_TYPE_JSON_UTF8 = new MediaType("application", "json", java.nio.charset.Charset.forName("UTF-8"));
 
     @BeforeEach
@@ -66,7 +70,7 @@ class MemberControllerTest {
                                           preprocessResponse(prettyPrint())))
                                       .build();
 
-        memberRepository.deleteAll();
+        databaseCleanup.execute();
 
         MemberCreateDTO req = new MemberCreateDTO();
         req.setEmail("defaultTest@naver.com");
@@ -148,7 +152,7 @@ class MemberControllerTest {
     @Test
     public void deleteMember() throws Exception {
         MemberDeleteRequestVO req = new MemberDeleteRequestVO();
-        req.setId(2L);
+        req.setId(1L);
         String content = objectMapper.writeValueAsString(req);
         this.mockMvc.perform(delete("/api/member").content(content).accept(MEDIA_TYPE_JSON_UTF8).contentType(MEDIA_TYPE_JSON_UTF8))
                     .andExpect(status().isOk())
