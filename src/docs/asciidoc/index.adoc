@@ -1,0 +1,21 @@
+= RESTful Sample API Guide
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+[[테스트_샘플]]
+== createMember api
+operation::createMember[snippets='http-request,curl-request,request-body,http-response,response-body,response-fields']
+== readMemberByEmail api
+operation::readMemberByEmail[snippets='http-request,curl-request,request-body,http-response,response-body,response-fields']
+== updateMember api
+operation::updateMember[snippets='http-request,curl-request,request-body,http-response,response-body,response-fields']
+== deleteMember api
+operation::deleteMember[snippets='http-request,curl-request,request-body,http-response,response-body,response-fields']
