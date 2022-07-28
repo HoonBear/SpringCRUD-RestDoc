@@ -3,10 +3,7 @@ package com.example.doctest.service.favorite;
 
 import com.example.doctest.domain.favorite.Favorite;
 import com.example.doctest.domain.favorite.FavoriteRepository;
-import com.example.doctest.domain.member.Member;
-import com.example.doctest.domain.member.MemberRepository;
 import com.example.doctest.dto.favorite.FavoriteCreateDTO;
-import com.example.doctest.service.member.MemberService;
 import com.example.doctest.vo.favorite.FavoriteCreateResponseVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,8 +1,12 @@
 package com.example.doctest.domain.favorite;
 
 import com.example.doctest.domain.member.Member;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
+
 
 @Getter
 /**
@@ -25,15 +32,13 @@ public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //@ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
+    @Setter
     private Member member; //연관관계의 주인이 된다
 
     @Setter
     private String favoriteName;
 
-    public void setMember(Member member) {
-        this.member = member;
-        member.getFavoriteList().add(this);
-    }
 }
