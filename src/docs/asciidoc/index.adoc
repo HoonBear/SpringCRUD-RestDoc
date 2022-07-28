@@ -3,14 +3,14 @@
 :icons: font
 :source-highlighter: highlightjs
 :toc: left
-:toclevels: 4
+:toclevels: 1
 :sectlinks:
 
 ifndef::snippets[]
 :snippets: ./build/generated-snippets
 endif::[]
 
-[[테스트_샘플]]
+[[Member]]
 == createMember api
 operation::createMember[snippets='http-request,curl-request,request-body,http-response,response-body,response-fields']
 == readMemberByEmail api

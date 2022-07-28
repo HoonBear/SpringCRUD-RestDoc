@@ -1,6 +1,5 @@
 package com.example.doctest.controller;
 
-import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
@@ -16,11 +15,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.example.doctest.DatabaseCleanup;
 import com.example.doctest.domain.member.MemberRepository;
 import com.example.doctest.dto.member.MemberCreateDTO;
-import com.example.doctest.dto.member.MemberDeleteDTO;
-import com.example.doctest.dto.member.MemberUpdateDTO;
 import com.example.doctest.service.member.MemberService;
 import com.example.doctest.vo.member.MemberCreateRequestVO;
-import com.example.doctest.vo.member.MemberCreateResponseVO;
 import com.example.doctest.vo.member.MemberDeleteRequestVO;
 import com.example.doctest.vo.member.MemberUpdateRequestVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +24,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureHttpGraphQlTester;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.RestDocumentationContextProvider;
@@ -52,9 +47,6 @@ class MemberControllerTest {
 
     @Autowired
     private MemberService memberService;
-
-    @Autowired
-    private MemberRepository memberRepository;
 
     @Autowired
     private DatabaseCleanup databaseCleanup;
