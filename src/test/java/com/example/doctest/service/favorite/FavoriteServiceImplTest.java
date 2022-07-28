@@ -29,12 +29,12 @@ class FavoriteServiceImplTest {
         List<Favorite> favorite = favoriteRepository.findByMemberId(1L);
         //Member member = favorite.get(0).getMember();
 
-
-        Member member = new Member();
-        member.setFavoriteList(favorite);
-
-
-        System.out.println(member);
+        System.out.println(favorite.toString());
+ //        Member member = new Member();
+//        member.setFavoriteList(favorite);
+//
+//
+//        System.out.println(member);
     }
 
     @Test
@@ -42,7 +42,6 @@ class FavoriteServiceImplTest {
     Member member = memberRepository.findById(1L).orElseThrow();
 
 
-    
 
         List<Favorite> favorite = member.getFavoriteList();
 

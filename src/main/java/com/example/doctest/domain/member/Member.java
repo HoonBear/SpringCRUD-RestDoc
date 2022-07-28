@@ -31,7 +31,7 @@ public class Member {
     @JsonIgnore
     //@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     @OneToMany(mappedBy = "member")
-    //cascade -> 부모지워지면 자식 어쩔껀지 정하는 거
+    //cascade -> 부모지워지면 자식 어쩔껀지 정하는 거(FK로 물려있는 연관데이터 삭제)
     private List<Favorite> favoriteList = new ArrayList<>();
     @Column(length = 50)
     private String email;

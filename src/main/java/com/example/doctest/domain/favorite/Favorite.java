@@ -35,10 +35,14 @@ public class Favorite {
     //@ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
-    @Setter
     private Member member; //연관관계의 주인이 된다
 
     @Setter
     private String favoriteName;
+
+    public void setMember(Member member) {
+        this.member = member;
+        member.getFavoriteList().add(this);
+    }
 
 }
