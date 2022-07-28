@@ -16,19 +16,19 @@ import lombok.Setter;
 @Entity
 @Table(name = "favorite")
 public class Favorite {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
     private Member member; //연관관계의 주인이 된다
+
+    @Setter
     private String favoriteName;
 
     public void setMember(Member member) {
         this.member = member;
-    }
-
-    public void setFavoriteName(String favoriteName) {
-        this.favoriteName = favoriteName;
+        member.getFavoriteList().add(this);
     }
 }

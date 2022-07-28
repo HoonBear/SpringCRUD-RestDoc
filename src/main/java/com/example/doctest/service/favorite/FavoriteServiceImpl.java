@@ -19,19 +19,13 @@ import org.springframework.stereotype.Service;
 public class FavoriteServiceImpl implements FavoriteService {
 
     private final FavoriteRepository favoriteRepository;
-
-    private final MemberRepository memberRepository;
-
     private final ModelMapper modelMapper;
 
     @Override
     public FavoriteCreateResponseVO createFavorite(FavoriteCreateDTO favoriteCreateDto) {
-        Member member = memberRepository.findById(favoriteCreateDto.getMemberId()).orElseThrow();
-        Favorite favorite = modelMapper.map(favoriteCreateDto, Favorite.class);
-
-        member.addToFavorite(favorite);
-
-        memberRepository.saveAndFlush(member);
+        Favorite favorite = favoriteRepository.save(
+            modelMapper.map(favoriteCreateDto, Favorite.class)
+        );
 
         FavoriteCreateResponseVO response = modelMapper.map(favorite, FavoriteCreateResponseVO.class);
 

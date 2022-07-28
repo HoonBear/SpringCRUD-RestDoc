@@ -16,7 +16,7 @@ public class DoctestApplication {
     public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setSkipNullEnabled(true);
-        return new ModelMapper();
+        return modelMapper;
     }
 
 }
