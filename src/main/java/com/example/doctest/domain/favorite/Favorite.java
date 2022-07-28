@@ -13,7 +13,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 @Entity
 @Table(name = "favorite")
 public class Favorite {
@@ -24,4 +23,12 @@ public class Favorite {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member; //연관관계의 주인이 된다
     private String favoriteName;
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void setFavoriteName(String favoriteName) {
+        this.favoriteName = favoriteName;
+    }
 }

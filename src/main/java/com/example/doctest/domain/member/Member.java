@@ -4,6 +4,7 @@ import com.example.doctest.domain.favorite.Favorite;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,11 +26,16 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JsonIgnore
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Favorite> favoriteList = new ArrayList<>();
     @Column(length = 50)
     private String email;
     private String password;
     private String deleteYn;
+
+    public void addToFavorite(Favorite favorite) {
+        favorite.setMember(this);
+        this.favoriteList.add(favorite);
+    }
 }
 
