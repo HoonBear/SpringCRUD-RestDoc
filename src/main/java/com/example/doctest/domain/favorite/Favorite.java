@@ -13,6 +13,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
+/**
+ * @Setter를 함부로 사용하면
+ * Id가 임의의 값으로 세팅되어
+ * 불특정 로우가 UPDATE 될 수 있음 (ModelMapper 사용할 경우)
+ */
 @Entity
 @Table(name = "favorite")
 public class Favorite {
