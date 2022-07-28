@@ -9,10 +9,12 @@ import com.example.doctest.domain.member.MemberRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import java.util.Optional;
+import org.hibernate.Hibernate;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 class FavoriteServiceImplTest {
@@ -25,29 +27,16 @@ class FavoriteServiceImplTest {
 
 
     @Test
+    @Transactional
     void readFavorite() {
         List<Favorite> favorite = favoriteRepository.findByMemberId(1L);
-        //Member member = favorite.get(0).getMember();
-
-        System.out.println(favorite.toString());
- //        Member member = new Member();
-//        member.setFavoriteList(favorite);
-//
-//
-//        System.out.println(member);
+        System.out.println(favorite);
     }
 
     @Test
+    @Transactional
     void memberFirst() {
-    Member member = memberRepository.findById(1L).orElseThrow();
-
-
-
-        List<Favorite> favorite = member.getFavoriteList();
-
-
-        //member.addToFavorite();
-
-
+        Member member = memberRepository.findById(1L).orElseThrow();
+        System.out.println(member);
     }
 }
