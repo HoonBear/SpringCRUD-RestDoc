@@ -29,7 +29,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JsonIgnore
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     /* cascade -> 부모지워지면 자식 어쩔껀지 정하는 거 (FK로 물려있는 연관데이터 삭제) */
     private List<Favorite> favoriteList = new ArrayList<>();
     @Column(length = 50)

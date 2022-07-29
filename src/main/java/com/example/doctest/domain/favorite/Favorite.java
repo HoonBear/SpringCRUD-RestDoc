@@ -32,8 +32,8 @@ public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@ManyToOne(fetch = FetchType.LAZY)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    //@ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
     private Member member; //연관관계의 주인이 된다
 
